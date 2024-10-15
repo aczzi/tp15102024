@@ -75,9 +75,9 @@ _/!\ A chaque modification du fichier de configuration `conf/nginx.conf`, il fau
 9/ Dans le fichier `conf/nginx.conf` dans le bloc http>server ajoutez la configuration DASH permettant de streamer les fichiers du dossier /opt/mp4/ (CF la documentation de nginx-vod).
 
 ```yml
-   location: /dash/ {
-      vod: dash;
-      alias: /opt/mp4/;
+   location /dash/ {
+      vod dash;
+      alias /opt/mp4/;
    }
 ```
 
@@ -100,9 +100,9 @@ Ouvrez la page https://timeline.fishtank.cloud, selectionnez DASH, entrez l'url 
 Dans le fichier `conf/nginx.conf` ajouter dans le bloc http>server la configuration pour le HLS permettant de streamer les fichiers du dossier /opt/mp4/.
 
 ```yml
-   location: /hls/ {
-      vod: hls;
-      alias: /opt/mp4/;
+   location /hls/ {
+      vod hls;
+      alias /opt/mp4/;
    }
 ```
 
