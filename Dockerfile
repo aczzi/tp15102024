@@ -2,15 +2,19 @@
 ARG NGINX_VERSION
 ARG VOD_MODULE_VERSION
 #step 1
-FROM centos:centos7
-RUN yum groupinstall --disablerepo=\* --enablerepo=base,updates,cr "Development Tools" -y
-RUN yum install pcre pcre-devel\
-	libxml2 libxml2-devel\
-	curl libcurl-devel\
-	wget openssl openssl-devel\
-	uriparser uriparser-devel\
-	diffutils file expat-devel\
-	libuuid libuuid-devel -y
+FROM redhat/ubi8
+
+RUN yum install -y gcc-c++ \
+				   gcc \
+				   libgomp \
+				   cmake3 \
+				   make \
+				   pcre pcre-devel \
+				   curl libcurl-devel \
+				   libxml2 libxml2-devel \
+				   openssl openssl-devel \
+				   diffutils file expat-devel \
+				   libuuid libuuid-devel
 #step 2
 USER root
 RUN mkdir /tmp/nginx /tmp/nginx-vod-module 
